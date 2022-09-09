@@ -1,0 +1,8 @@
+/packages/*/lib/
+coverage/
+
+dist/
+test/
+tests/
+node_modules/
+dist/

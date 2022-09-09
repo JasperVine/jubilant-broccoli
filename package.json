@@ -1,0 +1,40 @@
+{
+  "name": "jubilant-broccoli",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "yarn@3.2.3",
+  "description": "A Personal Project",
+  "author": "jinxu0853@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "husky install",
+    "lint-staged": "lint-staged",
+    "commit": "npx only-allow yarn && git cz",
+    "preinstall": "npx only-allow yarn",
+    "clean:yarn-cache": "yarn cache clean --all",
+    "commitlint": "commitlint",
+    "lint": "yarn run lint:es && yarn run lint:prettier && yarn run lint:style",
+    "lint:es": "eslint --ext .js,.jsx,.ts,.tsx ./ --cache --quiet --resolve-plugins-relative-to .",
+    "lint:style": "stylelint \"**/*.{css,skipProjectless}\" --syntax less --allow-empty-input",
+    "lint:prettier": "prettier --list-different \"**/*.{css,less,js,jsx,ts,tsx,json,yml,yaml,md}\""
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@iceworks/spec": "^1.6.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.23.0",
+    "git-cz": "^4.7.6",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.11.0"
+  }
+}
