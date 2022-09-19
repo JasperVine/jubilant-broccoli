@@ -1,0 +1,20 @@
+{
+  "name": "build-scripts-hello-word",
+  "version": "1.0.0",
+  "description": "A build-scrips hello-world project",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "build-scripts start",
+    "build": "build-scripts build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "build-scripts": "^1.3.0",
+    "webpack": "^5.52.0",
+    "webpack-dev-server": "^4.11.0"
+  },
+  "dependencies": {
+    "webpack-chain": "^6.5.1"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "entry": "./src/index.js",
+  "outputDir": "dist",
+  "plugins":[
+    "plugin-react-app"
+  ]
+}
