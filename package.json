@@ -26,6 +26,9 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "bin": {
+    "build-scripts": "./bin/build-scripts.js"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@iceworks/spec": "^1.6.0",
