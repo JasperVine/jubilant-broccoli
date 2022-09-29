@@ -19,7 +19,9 @@
     "lint": "yarn run lint:es && yarn run lint:prettier && yarn run lint:style",
     "lint:es": "eslint --ext .js,.jsx,.ts,.tsx ./ --cache --quiet --resolve-plugins-relative-to .",
     "lint:style": "stylelint \"**/*.{css,skipProjectless}\" --syntax less --allow-empty-input",
-    "lint:prettier": "prettier --list-different \"**/*.{css,less,js,jsx,ts,tsx,json,yml,yaml,md}\""
+    "lint:prettier": "prettier --list-different \"**/*.{css,less,js,jsx,ts,tsx,json,yml,yaml,md}\"",
+    "fix": "yarn run fix:es && yarn run fix:prettier && yarn run fix:style",
+    "fix:es": "eslint --ext .js,.jsx,.ts,.tsx ./ --cache --quiet --fix --resolve-plugins-relative-to ."
   },
   "config": {
     "commitizen": {
@@ -31,14 +33,27 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
-    "@iceworks/spec": "^1.6.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.23.0",
+    "eslint-config-airbnb": "^19.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "git-cz": "^4.7.6",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "stylelint": "^14.11.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
     "typescript": "^4.8.3"
   }
 }

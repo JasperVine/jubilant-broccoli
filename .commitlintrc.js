@@ -1,3 +1,3 @@
-const { getCommitlintConfig } = require('@iceworks/spec');
-
-module.exports = getCommitlintConfig('common');
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+};
