@@ -1,6 +1,5 @@
 # Logs
-yarn-debug.log*
-yarn-error.log*
+.turbo
 
 # Dependency directories
 node_modules/
@@ -11,13 +10,6 @@ node_modules/
 
 # Optional eslint cache
 .eslintcache
-
-.yarn/*
-!.yarn/patches
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
 
 
 dist/

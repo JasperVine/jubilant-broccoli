@@ -1,8 +1,8 @@
 /packages/*/lib/
+/packages/*/dist/
 coverage/
 
-dist/
+dist
 test/
 tests/
 node_modules/
-dist/

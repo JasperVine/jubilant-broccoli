@@ -24,6 +24,7 @@
   "plugins": ["prettier", "react", "react-hooks", "@typescript-eslint"],
   "rules": {
     "no-use-before-define": "off",
+    "no-restricted-exports": "off",
     "arrow-body-style": "off",
     "prettier/prettier": "error",
     "indent": "off",

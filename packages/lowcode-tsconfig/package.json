@@ -1,0 +1,19 @@
+{
+  "name": "lowcode-tsconfig",
+  "version": "1.0.0",
+  "description": "常用 tsconfig.json 配置",
+  "main": "./base.json",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "typescript",
+    "config"
+  ],
+  "author": "jinxu0853@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "tsup": "^6.2.3"
+  }
+}

@@ -3,11 +3,9 @@ import * as path from 'path';
 import * as fs from 'fs-extra';
 import JSON5 = require('json5');
 import WebpackChain = require('webpack-chain');
-import * as fg from 'fast-glob';
+import fg from 'fast-glob';
 import camelCase = require('camelcase');
 import { MultiStats, webpack } from 'webpack';
-import { AggregatedResult } from '@jest/test-result';
-import { GlobalConfig } from '@jest/types/build/Config';
 import type WebpackDevServer from 'webpack-dev-server';
 import deepmerge = require('deepmerge');
 
@@ -146,10 +144,10 @@ export interface IUserConfigArgs {
   ignoreTasks?: string[];
 }
 
-export interface IJestResult {
-  results: AggregatedResult;
-  globalConfig: GlobalConfig;
-}
+// export interface IJestResult {
+//   results: AggregatedResult;
+//   globalConfig: GlobalConfig;
+// }
 
 export interface IOnHookCallbackArg {
   err?: Error;
@@ -158,7 +156,7 @@ export interface IOnHookCallbackArg {
   url?: string;
   devServer?: WebpackDevServer;
   config?: any;
-  result?: IJestResult;
+  // result?: IJestResult;
 }
 
 export interface IOnGetWebpackConfig {
@@ -342,9 +340,11 @@ class Context {
           option: {},
         };
       }
-      const plugins: [string, IPluginOptions] = Array.isArray(pluginInfo)
+      const plugins: [string, IPluginOptions] | [string] = Array.isArray(
+        pluginInfo
+      )
         ? pluginInfo
-        : [pluginInfo, undefined];
+        : [pluginInfo];
       const pluginResolveDir = process.env.EXTRA_PLUGIN_DIR
         ? [process.env.EXTRA_PLUGIN_DIR, this.rootDir]
         : [this.rootDir];
@@ -493,7 +493,6 @@ class Context {
 
   modifyUserConfig: IModifyUserConfig = (configKey, value, options) => {
     const errorMsg = 'config plugins is not support to be modified';
-    const { deepmerge: mergeInDeep } = options;
     if (typeof configKey === 'string') {
       if (configKey === 'plugins') {
         throw new Error(errorMsg);
@@ -506,7 +505,9 @@ class Context {
       _.set(
         this.userConfig,
         configPath,
-        mergeInDeep ? mergeConfig<JsonValue>(originalValue, newValue) : newValue
+        options?.deepmerge
+          ? mergeConfig<JsonValue>(originalValue, newValue)
+          : newValue
       );
     } else if (typeof configKey === 'function') {
       const modifiedValue = configKey(this.userConfig);
@@ -521,7 +522,7 @@ class Context {
         }
         Object.keys(modifiedValue).forEach(modifiedConfigKey => {
           const originalValue = this.userConfig[modifiedConfigKey];
-          this.userConfig[modifiedConfigKey] = mergeInDeep
+          this.userConfig[modifiedConfigKey] = options?.deepmerge
             ? mergeConfig<JsonValue>(
                 originalValue,
                 modifiedValue[modifiedConfigKey]
@@ -580,7 +581,7 @@ class Context {
           const configRegistration = configRegistrations[name];
           configRegistrations[name] = {
             ...configRegistration,
-            ...callback(configRegistration),
+            ...(callback ? callback(configRegistration) : {}),
           };
         }
       });
@@ -621,7 +622,7 @@ class Context {
           await this.runConfigWebpack(
             configInfo.configWebpack,
             configValue,
-            ignoreTasks
+            ignoreTasks as string[]
           );
         }
       }
@@ -662,7 +663,7 @@ class Context {
       } else {
         this.configArr.forEach(config => {
           if (config.name === name) {
-            config.modifyFunctions.push(func);
+            config.modifyFunctions.push(func as IPluginConfigWebpack);
           }
         });
       }
@@ -689,7 +690,7 @@ class Context {
           await this.runConfigWebpack(
             configWebpack,
             this.commandArgs[cliOpt],
-            ignoreTasks
+            ignoreTasks as string[]
           );
         }
       }

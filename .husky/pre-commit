@@ -1,4 +1,13 @@
+###
+ # @Author: jinxu@tuzhanai.com
+ # @Date: 2022-09-09 19:07:59
+ # @LastEditors: jinxu@tuzhanai.com
+ # @LastEditTime: 2022-09-30 19:35:25
+ # @FilePath: /jubilant-broccoli/.husky/pre-commit
+ # @Description:
+ # Copyright (c) 2022 by jinxu@tuzhanai.com, All Rights Reserved.
+###
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn run lint-staged
+npx lint-staged

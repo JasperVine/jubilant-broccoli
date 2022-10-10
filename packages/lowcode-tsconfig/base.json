@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "es6",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "es5", "es6", "es7", "scripthost", "es2018.promise"],
+    "emitDecoratorMetadata": true,
+    "preserveConstEnums": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Base"
+}
