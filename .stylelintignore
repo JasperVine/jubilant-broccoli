@@ -1,0 +1,13 @@
+packages/template
+packages/**/lib
+packages/**/bin
+packages/**/dist
+examples/**/lib
+examples/**/dist
+examples/**/bin
+__tests__/coverage
+
+**/*.js
+**/*.jsx
+**/*.ts
+**/*.tsx

@@ -2,7 +2,7 @@
   "name": "lowcode-build-scripts",
   "version": "1.0.0",
   "description": "通用的工程化构建插件项目",
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "author": "jinxu0853@gmail.com",
   "license": "ISC",
   "publishConfig": {

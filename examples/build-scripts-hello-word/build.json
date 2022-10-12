@@ -1,6 +1,7 @@
 {
   "entry": "./src/index.js",
   "outputDir": "dist",
+  "mode": "development",
   "plugins":[
     "plugin-react-app"
   ]

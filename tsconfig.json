@@ -6,8 +6,7 @@
     "outDir": "dist",
     "noEmit": true
   },
-  "include": ["__tests__"],
-  "exclude": ["node_modules", "__tests__/coverage/**"],
+  "exclude": ["node_modules"],
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Monorepo"
 }

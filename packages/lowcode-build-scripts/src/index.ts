@@ -2,6 +2,7 @@
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import JSON5 = require('json5');
+import { Logger } from 'npmlog';
 import WebpackChain = require('webpack-chain');
 import fg from 'fast-glob';
 import camelCase = require('camelcase');
@@ -75,6 +76,44 @@ export interface IModifyUserConfig {
 
 export interface IModeConfig {
   [name: string]: IUserConfig;
+}
+
+export interface IPluginInfo {
+  fn: IPlugin;
+  name?: string;
+  pluginPath?: string;
+  options: IPluginOptions;
+}
+
+export interface IPlugin {
+  (api: IPluginAPI, options?: IPluginOptions): MaybePromise<void>;
+}
+
+export interface IGetAllPlugin {
+  (dataKeys?: string[]): Partial<IPluginInfo>[];
+}
+
+export interface IOnGetJestConfig {
+  (fn: IJestConfigFunction): void;
+}
+
+export interface IPluginAPI {
+  log: Logger;
+  context: PluginContext;
+  registerTask: IRegisterTask;
+  getAllTask: () => string[];
+  getAllPlugin: IGetAllPlugin;
+  onGetWebpackConfig: IOnGetWebpackConfig;
+  onGetJestConfig: IOnGetJestConfig;
+  onHook: IOnHook;
+  setValue: <T>(name: string, value: T) => void;
+  getValue: <T>(name: string) => T;
+  registerUserConfig: (args: MaybeArray<IUserConfigArgs>) => void;
+  hasRegistration: (name: string, type?: 'cliOption' | 'userConfig') => boolean;
+  registerCliOption: (args: MaybeArray<ICliOptionArgs>) => void;
+  registerMethod: IRegisterMethod;
+  applyMethod: IApplyMethodAPI;
+  modifyUserConfig: IModifyUserConfig;
 }
 
 export type CommandArgs = IHash<any>;
@@ -271,7 +310,7 @@ class Context {
 
   originalUserConfig: IUserConfig;
 
-  plugins: any[];
+  plugins: IPluginInfo[];
 
   commandModules: ICommandModules = {};
 
@@ -326,18 +365,16 @@ class Context {
     this.pkg = this.getProjectFile(PKG_FILE);
   }
 
-  resolvePlugins = (
-    builtInPlugins: IPluginList
-  ): Array<Record<string, any>> => {
+  resolvePlugins = (builtInPlugins: IPluginList): IPluginInfo[] => {
     const userPlugins = [
       ...builtInPlugins,
       ...(this.userConfig.plugins || []),
-    ].map((pluginInfo): Record<string, any> => {
+    ].map((pluginInfo): IPluginInfo => {
       let fn: any = (): void => {};
       if (_.isFunction(pluginInfo)) {
         return {
           fn: pluginInfo,
-          option: {},
+          options: {},
         };
       }
       const plugins: [string, IPluginOptions] | [string] = Array.isArray(
@@ -351,7 +388,7 @@ class Context {
       const pluginPath = path.isAbsolute(plugins[0])
         ? plugins[0]
         : require.resolve(plugins[0], { paths: pluginResolveDir });
-      const options = plugins[1];
+      const options = plugins[1] as IPluginOptions;
       fn = require(pluginPath);
       return {
         name: plugins[0],
@@ -817,7 +854,7 @@ class Context {
       const { fn, options, name: pluginName } = pluginInfo;
       const pluginContext = _.pick(this, PLUGIN_CONTEXT_KEY);
       const applyMethod: IApplyMethodAPI = (methodName, ...args) => {
-        return this.applyMethod([methodName, pluginName], ...args);
+        return this.applyMethod([methodName, pluginName || ''], ...args);
       };
 
       const pluginAPI = {
