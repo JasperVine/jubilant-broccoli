@@ -1,12 +1,5 @@
 {
   "extends": "tsconfig/base",
-  "compilerOptions": {
-    "baseUrl": "./",
-    "rootDir": "./",
-    "outDir": "dist",
-    "noEmit": true
-  },
-  "exclude": ["node_modules"],
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Monorepo"
 }

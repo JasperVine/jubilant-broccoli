@@ -14,6 +14,7 @@
     "preserveConstEnums": true,
     "allowSyntheticDefaultImports": true
   },
+  "exclude": ["node_modules", "dist", "lib"],
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Base"
 }
