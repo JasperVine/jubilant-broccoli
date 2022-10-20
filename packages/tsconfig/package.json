@@ -1,5 +1,5 @@
 {
-  "name": "lowcode-tsconfig",
+  "name": "tsconfig",
   "version": "1.0.0",
   "description": "常用 tsconfig.json 配置",
   "main": "./base.json",
@@ -12,8 +12,5 @@
     "config"
   ],
   "author": "jinxu0853@gmail.com",
-  "license": "ISC",
-  "dependencies": {
-    "tsup": "^6.2.3"
-  }
+  "license": "ISC"
 }

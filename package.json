@@ -12,8 +12,14 @@
     "commit": "git cz",
     "preinstall": "npx only-allow pnpm",
     "commitlint": "commitlint",
-    "lint": "turbo run lint",
-    "fix": "turbo run fix"
+    "lint": " pnpm lint:es & pnpm lint:style &pnpm lint:prettier",
+    "lint:es": "eslint --ext .js,.jsx,.ts,.tsx ./ --cache --quiet --resolve-plugins-relative-to .",
+    "lint:style": "stylelint \"**/*.{css,skipProjectless}\" --syntax less --allow-empty-input",
+    "lint:prettier": "prettier --list-different \"**/*.{css,less,js,jsx,ts,tsx,json,yml,yaml,md}\"",
+    "fix": "pnpm run fix:es && pnpm run fix:prettier && pnpm run fix:style",
+    "fix:es": "eslint --ext .js,.jsx,.ts,.tsx ./ --cache --quiet --fix --resolve-plugins-relative-to .",
+    "fix:style": "stylelint \"**/*.{css,less}\" --syntax less --fix --allow-empty-input",
+    "fix:prettier": "prettier --write \"**/*.{css,less,js,jsx,ts,tsx,json,yml,yaml,md}\""
   },
   "config": {
     "commitizen": {
@@ -46,11 +52,10 @@
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-order": "^4.1.0",
-    "turbo": "^1.5.5",
-    "typescript": "^4.8.3"
+    "turbo": "^1.5.5"
   },
   "dependencies": {
-    "lowcode-tsconfig": "workspace:^1.0.0",
+    "tsconfig": "workspace:^1.0.0",
     "tsup": "^6.2.3"
   }
 }
