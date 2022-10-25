@@ -1,7 +1,4 @@
-node_modules/
-lib/
-dist/
-build/
-coverage/
-demo/
-examples/
+node_modules
+lib
+dist
+coverage

@@ -1,8 +1,5 @@
-/packages/*/lib/
-/packages/*/dist/
-coverage/
-
+lib
 dist
-test/
-tests/
-node_modules/
+node_modules
+__tests__
+coverage

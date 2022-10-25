@@ -1,11 +1,8 @@
-packages/template
-packages/**/lib
-packages/**/bin
-packages/**/dist
-examples/**/lib
-examples/**/dist
-examples/**/bin
-__tests__/coverage
+lib
+__tests__
+dist
+bin
+node_modules
 
 **/*.js
 **/*.jsx

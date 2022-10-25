@@ -9,8 +9,18 @@
     "lint": {
       "outputs": []
     },
+    "dev": {
+      "cache": false
+    },
     "fix": {
       "outputs": []
+    },
+    "clean": {
+      "outputs": []
+    },
+    "test": {
+      "outputs": ["coverage/**/*"],
+      "dependsOn": ["build"]
     }
   }
 }

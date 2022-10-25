@@ -8,10 +8,13 @@
   "packageManager": "pnpm@7.3.0",
   "scripts": {
     "prepare": "husky install",
-    "build": "turbo run build --continue",
+    "build": "turbo run build",
     "commit": "git cz",
     "lint": "turbo run lint",
-    "test": "vitest"
+    "test": "turbo run test",
+    "fix": "turbo run fix",
+    "start": "turbo run dev",
+    "clean": "turbo run clean && rm -rf node_modules"
   },
   "config": {
     "commitizen": {
@@ -21,8 +24,11 @@
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^13.1.0",
+    "@types/node": "^18.11.4",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
+    "@vitest/coverage-c8": "^0.24.3",
+    "build-scripts": "2.0.0-26",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.23.0",
     "eslint-config-airbnb": "^19.0.1",
@@ -32,6 +38,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "fs-extra": "^10.1.0",
     "git-cz": "^4.7.6",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
