@@ -5,7 +5,7 @@
   "description": "A Personal Project",
   "author": "jinxu0853@gmail.com",
   "license": "MIT",
-  "packageManager": "pnpm@7.3.0",
+  "packageManager": "pnpm@7.14.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
@@ -26,6 +26,7 @@
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^13.1.0",
     "@types/node": "^18.11.4",
+    "@types/fs-extra": "^9.0.13",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vitest/coverage-c8": "^0.24.3",
@@ -50,7 +51,8 @@
     "stylelint-config-standard": "^22.0.0",
     "stylelint-order": "^4.1.0",
     "turbo": "^1.5.5",
-    "vitest": "^0.24.3"
+    "vitest": "^0.24.3",
+    "fast-glob": "^3.2.12"
   },
   "dependencies": {
     "tsconfig": "workspace:^1.0.0",

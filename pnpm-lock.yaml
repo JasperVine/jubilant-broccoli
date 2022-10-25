@@ -5,6 +5,7 @@ importers:
     specifiers:
       '@commitlint/cli': ^17.1.2
       '@commitlint/config-conventional': ^13.1.0
+      '@types/fs-extra': ^9.0.13
       '@types/node': ^18.11.4
       '@typescript-eslint/eslint-plugin': ^5.4.0
       '@typescript-eslint/parser': ^5.4.0
@@ -19,6 +20,7 @@ importers:
       eslint-plugin-prettier: ^4.0.0
       eslint-plugin-react: ^7.27.1
       eslint-plugin-react-hooks: ^4.3.0
+      fast-glob: ^3.2.12
       fs-extra: ^10.1.0
       git-cz: ^4.7.6
       husky: ^8.0.1
@@ -39,6 +41,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 17.1.2
       '@commitlint/config-conventional': 13.2.0
+      '@types/fs-extra': 9.0.13
       '@types/node': 18.11.4
       '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
       '@typescript-eslint/parser': 5.38.1_ypn2ylkkyfa5i233caldtndbqa
@@ -53,6 +56,7 @@ importers:
       eslint-plugin-prettier: 4.2.1_cfn5x6ujhhgzv3423d6k7r2zzm
       eslint-plugin-react: 7.31.8_eslint@8.24.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.24.0
+      fast-glob: 3.2.12
       fs-extra: 10.1.0
       git-cz: 4.9.0
       husky: 8.0.1
@@ -69,13 +73,14 @@ importers:
   packages/tsconfig:
     specifiers: {}
 
+  packages/vite-service:
+    specifiers: {}
+
   packages/webpack-service:
     specifiers:
-      '@types/fs-extra': ^9.0.13
       '@types/npmlog': ^4.1.4
       address: ^1.2.1
       deepmerge: ^4.2.2
-      fast-glob: ^3.2.12
       got: ^12.5.2
       npmlog: ^7.0.1
       picocolors: ^1.0.0
@@ -83,11 +88,9 @@ importers:
       webpack-chain: ^6.5.1
       webpack-dev-server: ^4.11.1
     dependencies:
-      '@types/fs-extra': 9.0.13
       '@types/npmlog': 4.1.4
       address: 1.2.1
       deepmerge: 4.2.2
-      fast-glob: 3.2.12
       got: 12.5.2
       npmlog: 7.0.1
       picocolors: 1.0.0
@@ -1001,7 +1004,7 @@ packages:
       }
     dependencies:
       '@types/node': 18.11.4
-    dev: false
+    dev: true
 
   /@types/glob/7.2.0:
     resolution:

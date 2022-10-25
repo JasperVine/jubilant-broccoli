@@ -1,7 +1,7 @@
 {
   "name": "@tuzki/scaffold-webpack-service",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a webpack service，use build-scripts@2.0.0-26",
   "type": "module",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -17,14 +17,12 @@
     "fix:prettier": "prettier --write \"**/*.{ts,md}\"",
     "clean": "rm -rf node_modules"
   },
-  "author": "",
+  "author": "jinxu0853@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "@types/fs-extra": "^9.0.13",
     "@types/npmlog": "^4.1.4",
     "address": "^1.2.1",
     "deepmerge": "^4.2.2",
-    "fast-glob": "^3.2.12",
     "got": "^12.5.2",
     "npmlog": "^7.0.1",
     "picocolors": "^1.0.0",
