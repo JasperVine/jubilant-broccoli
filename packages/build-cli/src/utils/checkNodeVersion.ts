@@ -1,12 +1,3 @@
-/*
- * @Author: jinxu@tuzhanai.com
- * @Date: 2022-10-25 14:13:25
- * @LastEditors: jinxu@tuzhanai.com
- * @LastEditTime: 2022-10-25 14:19:43
- * @FilePath: /jubilant-broccoli/packages/build-cli/src/utils/checkNodeVersion.ts
- * @Description:
- * Copyright (c) 2022 by jinxu@tuzhanai.com, All Rights Reserved.
- */
 import chalk from 'chalk';
 import semver from 'semver';
 
