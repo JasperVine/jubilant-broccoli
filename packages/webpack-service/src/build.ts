@@ -3,7 +3,7 @@ import WebpackChain from 'webpack-chain';
 import type webpack from 'webpack';
 import path from 'path';
 import fs from 'fs-extra';
-import webpackStats from './utils/webpackStats';
+import webpackStats from './utils/webpackStats.js';
 
 export default async (
   context: Context<

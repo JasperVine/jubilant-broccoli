@@ -1,11 +1,11 @@
 import { Context } from 'build-scripts';
 import deepmerge from 'deepmerge';
 import WebpackChain from 'webpack-chain';
-
+import DevServer from 'webpack-dev-server';
 import type WebpackDevServer from 'webpack-dev-server';
 import type { WebpackOptionsNormalized, MultiStats } from 'webpack';
-import webpackStats from './utils/webpackStats';
-import prepareURLs from './utils/prepareURLs';
+import webpackStats from './utils/webpackStats.js';
+import prepareURLs from './utils/prepareURLs.js';
 
 type DevServerConfig = Record<string, any>;
 
@@ -95,8 +95,6 @@ const start = async (
   let devServer: WebpackDevServer;
   // require webpack-dev-server after context setup
   // context may hijack webpack resolve
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const DevServer = require('webpack-dev-server');
 
   // static method getFreePort in v4
   if (DevServer.getFreePort) {

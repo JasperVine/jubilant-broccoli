@@ -1,7 +1,7 @@
 import picocolors from 'picocolors';
 import { MultiStats, Stats } from 'webpack';
-import formatWebpackMessages from './formatWebpackMessages';
-import log from './log';
+import formatWebpackMessages from './formatWebpackMessages.js';
+import log from './log.js';
 
 interface IUrls {
   lanUrlForTerminal: string;
