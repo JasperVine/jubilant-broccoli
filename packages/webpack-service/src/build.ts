@@ -5,7 +5,7 @@ import path from 'path';
 import fs from 'fs-extra';
 import webpackStats from './utils/webpackStats.js';
 
-export default async (
+const build = async (
   context: Context<
     WebpackChain,
     {
@@ -81,3 +81,5 @@ export default async (
 
   await applyHook(`after.${command}.compile`, result);
 };
+
+export default build;

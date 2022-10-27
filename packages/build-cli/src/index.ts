@@ -4,9 +4,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { program } from 'commander';
 import fs from 'fs-extra';
-import detectPort from 'detect-port';
 import webpackService from '@tuzki/scaffold-webpack-service';
 import checkNodeVersion from './utils/checkNodeVersion.js';
+import start from './start.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -15,7 +15,6 @@ async function init() {
     path.join(__dirname, '../package.json')
   );
   checkNodeVersion(packageInfo.engines.node, packageInfo.name);
-  const cwd = process.cwd();
 
   program
     .version(packageInfo.version, '-v, --version')
@@ -26,22 +25,11 @@ async function init() {
     .description('start server')
     .allowUnknownOption()
     .option('--config <config>', 'custom config path')
-    .option('-h, --host <host>', 'dev server host', '0.0.0.0')
-    .option('-p, --port <port>', 'dev server port', '3000')
-    .option('--rootDir <rootDir>', 'project root directory', cwd)
-    .action(async ({ rootDir, ...commandArgs }) => {
-      console.log(
-        '🚀 ~ file: index.ts ~ line 43 ~ .action ~ commandArgs',
-        commandArgs
-      );
-
-      process.env.NODE_ENV = 'development';
-      commandArgs.port = await detectPort(commandArgs.port);
-      await webpackService.run({
-        command: 'start',
-        rootDir,
-        commandArgs,
-      });
+    .option('-h, --host <host>', 'dev server host')
+    .option('-p, --port <port>', 'dev server port')
+    .option('--rootDir <rootDir>', 'project root directory')
+    .action(async () => {
+      await start();
     });
 
   program
@@ -49,7 +37,7 @@ async function init() {
     .description('build project')
     .allowUnknownOption()
     .option('--config <config>', 'use custom config')
-    .option('--rootDir <rootDir>', 'project root directory', cwd)
+    .option('--rootDir <rootDir>', 'project root directory')
     .action(async ({ rootDir, ...commandArgs }) => {
       process.env.NODE_ENV = 'production';
       await webpackService.run({

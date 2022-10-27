@@ -3,3 +3,4 @@ lib
 dist
 coverage
 build
+__tests__
