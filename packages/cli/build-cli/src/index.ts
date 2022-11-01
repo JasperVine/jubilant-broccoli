@@ -14,6 +14,7 @@ async function init() {
   const packageInfo = await fs.readJSON(
     path.join(__dirname, '../package.json')
   );
+  process.env.__ICE_VERSION__ = packageInfo.version;
   checkNodeVersion(packageInfo.engines.node, packageInfo.name);
 
   program

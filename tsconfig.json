@@ -1,5 +1,5 @@
 {
-  "extends": "tsconfig/base",
+  "extends": "@tuzki/scaffold-tsconfig/base",
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Monorepo"
 }

@@ -10,10 +10,10 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "lint": "pnpm run lint:es && pnpm run lint:prettier",
-    "lint:es": "eslint --ext .ts ./ --cache --quiet --resolve-plugins-relative-to .",
+    "lint:es": "eslint --ext .ts ./src --cache --quiet --resolve-plugins-relative-to .",
     "lint:prettier": "prettier --list-different \"**/*.{ts,md}\"",
     "fix": "pnpm run fix:es && pnpm run fix:prettier",
-    "fix:es": "eslint --ext .ts, ./ --cache --quiet --fix --resolve-plugins-relative-to .",
+    "fix:es": "eslint --ext .ts, ./src --cache --quiet --fix --resolve-plugins-relative-to .",
     "fix:prettier": "prettier --write \"**/*.{ts,md}\"",
     "clean": "rm -rf node_modules"
   },

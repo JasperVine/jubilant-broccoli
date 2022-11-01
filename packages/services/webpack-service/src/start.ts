@@ -52,6 +52,7 @@ const start = async (
   }
 
   const webpackConfig = configArr.map(v => v.config.toConfig());
+  console.log('🚀 ~ file: start.ts ~ line 55 ~ webpackConfig', webpackConfig);
   await applyHook(`before.${command}.run`, {
     args: commandArgs,
     config: webpackConfig,

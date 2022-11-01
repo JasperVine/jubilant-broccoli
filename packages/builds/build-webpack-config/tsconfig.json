@@ -1,0 +1,12 @@
+{
+  "extends": "@tuzki/scaffold-tsconfig/base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "src",
+    "outDir": "lib"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"],
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "BUILD_USER_CONFIG"
+}

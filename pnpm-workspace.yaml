@@ -1,3 +1,8 @@
 packages:
-  - 'packages/*'
+  - 'packages/builds/*'
   - 'examples/*'
+  - 'packages/cli/*'
+  - 'packages/plugins/*'
+  - 'packages/services/*'
+  - 'packages/common/*'
+  - 'packages/config/*'

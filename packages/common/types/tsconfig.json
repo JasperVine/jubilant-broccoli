@@ -1,5 +1,5 @@
 {
-  "extends": "tsconfig/base",
+  "extends": "@tuzki/scaffold-tsconfig/base",
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "src",
@@ -8,5 +8,5 @@
   "include": ["src"],
   "exclude": ["node_modules"],
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "BUILD_CLI"
+  "display": "TYPES"
 }
