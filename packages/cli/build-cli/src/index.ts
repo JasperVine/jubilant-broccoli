@@ -4,9 +4,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { program } from 'commander';
 import fs from 'fs-extra';
-import webpackService from '@tuzki/scaffold-webpack-service';
 import checkNodeVersion from './utils/checkNodeVersion.js';
 import start from './start.js';
+import build from './build.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -39,13 +39,8 @@ async function init() {
     .allowUnknownOption()
     .option('--config <config>', 'use custom config')
     .option('--rootDir <rootDir>', 'project root directory')
-    .action(async ({ rootDir, ...commandArgs }) => {
-      process.env.NODE_ENV = 'production';
-      await webpackService.run({
-        command: 'build',
-        rootDir,
-        commandArgs,
-      });
+    .action(async () => {
+      await build();
     });
 
   program.parse();
